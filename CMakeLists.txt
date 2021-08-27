@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 3.9.4)
 cmake_policy(SET CMP0091 NEW)
 project(WasmEdge)
 
+find_package(protobuf CONFIG REQUIRED)
+find_package(gRPC CONFIG REQUIRED)
+find_package( CURL )
+find_package(nlohmann_json CONFIG REQUIRED)
+
 find_program(GIT_CMD git)
 execute_process(COMMAND
   ${GIT_CMD} describe --match "*[0-9].[0-9]*" --tag
