@@ -8,12 +8,43 @@
 #include "po/argument_parser.h"
 #include "vm/vm.h"
 
+#include "opentelemetry/exporters/ostream/span_exporter.h"
+#include "opentelemetry/sdk/trace/simple_processor.h"
+#include "opentelemetry/sdk/trace/tracer_provider.h"
+#include "opentelemetry/trace/provider.h"
+
 #include <cstdlib>
 #include <iostream>
+
+namespace trace = opentelemetry::trace;
+namespace nostd = opentelemetry::nostd;
+
+namespace {
+void initTracer() {
+  auto exporter = std::unique_ptr<sdktrace::SpanExporter>(
+      new opentelemetry::exporter::trace::OStreamSpanExporter);
+  auto processor = std::unique_ptr<sdktrace::SpanProcessor>(
+      new sdktrace::SimpleSpanProcessor(std::move(exporter)));
+  auto provider = nostd::shared_ptr<opentelemetry::trace::TracerProvider>(
+      new sdktrace::TracerProvider(std::move(processor)));
+
+  // Set the global trace provider
+  opentelemetry::trace::Provider::SetTracerProvider(provider);
+}
+nostd::shared_ptr<trace::Tracer> get_tracer() {
+  auto provider = trace::Provider::GetTracerProvider();
+  return provider->GetTracer("wasmedger");
+}
+} // namespace
 
 int main(int Argc, const char *Argv[]) {
   namespace PO = WasmEdge::PO;
   using namespace std::literals;
+
+  initTracer();
+
+  auto span = get_tracer()->StartSpan("Init Success");
+  auto scope = get_tracer()->WithActiveSpan(span);
 
   std::ios::sync_with_stdio(false);
   WasmEdge::Log::setErrorLoggingLevel();
@@ -133,6 +164,9 @@ int main(int Argc, const char *Argv[]) {
     }
   } else {
     // reactor mode
+    get_tracer()->StartSpan("ReactorMode");
+    auto scope = get_tracer()->WithActiveSpan(span);
+
     if (Args.value().empty()) {
       std::cerr
           << "A function name is required when reactor mode is enabled.\n";
@@ -240,5 +274,6 @@ int main(int Argc, const char *Argv[]) {
     } else {
       return EXIT_FAILURE;
     }
+    span->End();
   }
 }
