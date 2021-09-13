@@ -150,6 +150,9 @@ instance/
 # Sphinx documentation
 docs/_build/
 
+# Mk Docs
+site/
+
 # PyBuilder
 .pybuilder/
 target/
