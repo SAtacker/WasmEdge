@@ -56,8 +56,39 @@ option(WASMEDGE_BUILD_SHARED_LIB "Generate the WasmEdge shared library." ON)
 option(WASMEDGE_BUILD_STATIC_LIB "Generate the WasmEdge static library." OFF)
 option(WASMEDGE_BUILD_TOOLS "Generate wasmedge and wasmedgec tools." ON)
 option(WASMEDGE_FORCE_DISABLE_LTO "Forcibly disable link time optimization when linking even in Release/RelWithDeb build." OFF)
+option(WASMEDGE_PROFILING "Link gperftools to binary" OFF)
 set(WASMEDGE_BUILD_PACKAGE "DEB;RPM" CACHE STRING "Package generate types")
 set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/cpack_config.cmake)
+
+if(WASMEDGE_PROFILING)
+  if(GPERF_PATH)
+    link_directories(${GPERF_PATH})
+  else()
+    message(STATUS "Gperf path not given, running ${CMAKE_SOURCE_DIR}/utils/profiling.sh")
+    exec_program(${CMAKE_SOURCE_DIR}/utils/profiling.sh)
+    link_directories("/usr/local/lib")
+  endif()
+  
+  link_libraries("profiler")
+  
+  add_custom_target(profile
+    COMMAND env CPUPROFILE=${CMAKE_BINARY_DIR}/wasmedge.prof ${CMAKE_BINARY_DIR}/tools/wasmedge/wasmedge --dir=.:. wasmedge_quickjs.wasm index.js
+    COMMENT "Profiling"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    DEPENDS wasmedge
+  )
+  add_dependencies(profile wasmedge)
+  add_custom_target(prof-visualize-text
+    COMMAND pprof --text ${CMAKE_BINARY_DIR}/tools/wasmedge/wasmedge ${CMAKE_BINARY_DIR}/wasmedge.prof 
+    COMMENT "Visualize in text"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  )
+  add_custom_target(prof-visualize-gv
+    COMMAND pprof --gv ${CMAKE_BINARY_DIR}/tools/wasmedge/wasmedge ${CMAKE_BINARY_DIR}/wasmedge.prof 
+    COMMENT "Visualize in gv"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  )
+endif()
 
 if(WASMEDGE_BUILD_COVERAGE)
   include(CodeCoverage)
