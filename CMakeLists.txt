@@ -56,7 +56,8 @@ option(WASMEDGE_BUILD_SHARED_LIB "Generate the WasmEdge shared library." ON)
 option(WASMEDGE_BUILD_STATIC_LIB "Generate the WasmEdge static library." OFF)
 option(WASMEDGE_BUILD_TOOLS "Generate wasmedge and wasmedgec tools." ON)
 option(WASMEDGE_FORCE_DISABLE_LTO "Forcibly disable link time optimization when linking even in Release/RelWithDeb build." OFF)
-option(WASMEDGE_PROFILING "Link gperftools to binary" OFF)
+option(WASMEDGE_PROFILING_GPERF "Link gperftools to binary" OFF)
+option(WASMEDGE_PROFILING_GPROF "Link gperftools to binary" OFF)
 set(WASMEDGE_BUILD_PACKAGE "DEB;RPM" CACHE STRING "Package generate types")
 set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/cpack_config.cmake)
 
@@ -89,6 +90,30 @@ if(WASMEDGE_PROFILING)
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   )
 endif()
+
+if(WASMEDGE_PROFILING_GPROF)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
+  exec_program(wget ARGS -nc https://github.com/WasmEdge/www/raw/main/assets/public/20211011/wasmedge_quickjs.wasm)
+  exec_program(wget ARGS -nc https://raw.githubusercontent.com/WasmEdge/www/main/assets/public/20211011/index.js)
+  add_custom_target(pre-gprof
+    COMMAND ${CMAKE_BINARY_DIR}/tools/wasmedge/wasmedge --dir=.:. wasmedge_quickjs.wasm index.js
+    COMMENT "WasmEdge Gprof run"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  )
+  add_custom_target(gprof
+    COMMAND gprof ${CMAKE_BINARY_DIR}/tools/wasmedge/wasmedge gmon.out > ${CMAKE_BINARY_DIR}/wasmedge_gprof.txt
+    COMMENT "WasmEdge Gprof"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    DEPENDS pre-gprof
+  )
+  add_custom_target(gprof-vis
+    COMMAND gprof2dot -f ${CMAKE_BINARY_DIR}/wasmedge_gprof.txt | dot -Tpng -o output.png
+    COMMENT "WasmEdge Gprof vis"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    DEPENDS gprof
+  )
+endif()
+
 
 if(WASMEDGE_BUILD_COVERAGE)
   include(CodeCoverage)
