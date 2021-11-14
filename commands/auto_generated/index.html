@@ -305,1165 +305,432 @@ NAME
     WasmEdge
 
 CLASSES
-    Boost.Python.enum(builtins.int)
-        Host
-        Proposal
-        Type
-    Boost.Python.instance(builtins.object)
+    pybind11_builtins.pybind11_object(builtins.object)
         Configure
+        Host
         Logging
+        Proposal
         Result
         Store
+        Type
         VM
         Value
 
-    class Configure(Boost.Python.instance)
+    class Configure(pybind11_builtins.pybind11_object)
      |  Method resolution order:
      |      Configure
-     |      Boost.Python.instance
+     |      pybind11_builtins.pybind11_object
      |      builtins.object
      |  
-     |  Static methods defined here:
+     |  Methods defined here:
      |  
      |  __init__(...)
-     |      __init__( (object)arg1) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*)
-     |  
-     |  __reduce__ = &lt;unnamed Boost.Python function&gt;(...)
+     |      __init__(self: WasmEdge.Configure) -&gt; None
      |  
      |  add(...)
-     |      add( (Configure)arg1, (Proposal)arg2) -&gt; None :
+     |      add(*args, **kwargs)
+     |      Overloaded function.
      |      
-     |          C++ signature :
-     |              void add(pysdk::Configure {lvalue},WasmEdge_Proposal)
+     |      1. add(self: WasmEdge.Configure, arg0: WasmEdge_Proposal) -&gt; None
      |      
-     |      add( (Configure)arg1, (Host)arg2) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void add(pysdk::Configure {lvalue},WasmEdge_HostRegistration)
+     |      2. add(self: WasmEdge.Configure, arg0: WasmEdge_HostRegistration) -&gt; None
      |  
      |  remove(...)
-     |      remove( (Configure)arg1, (Proposal)arg2) -&gt; None :
+     |      remove(*args, **kwargs)
+     |      Overloaded function.
      |      
-     |          C++ signature :
-     |              void remove(pysdk::Configure {lvalue},WasmEdge_Proposal)
+     |      1. remove(self: WasmEdge.Configure, arg0: WasmEdge_Proposal) -&gt; None
      |      
-     |      remove( (Configure)arg1, (Host)arg2) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void remove(pysdk::Configure {lvalue},WasmEdge_HostRegistration)
+     |      2. remove(self: WasmEdge.Configure, arg0: WasmEdge_HostRegistration) -&gt; None
      |  
      |  ----------------------------------------------------------------------
-     |  Data and other attributes defined here:
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
      |  
-     |  __instance_size__ = 24
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods inherited from Boost.Python.instance:
-     |  
-     |  __new__(*args, **kwargs) from Boost.Python.class
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.instance:
-     |  
-     |  __dict__
-     |  
-     |  __weakref__
 
-    class Host(Boost.Python.enum)
-     |  int([x]) -&gt; integer
-     |  int(x, base=10) -&gt; integer
+    class Host(pybind11_builtins.pybind11_object)
+     |  Members:
      |  
-     |  Convert a number or string to an integer, or return 0 if no arguments
-     |  are given.  If x is a number, return x.__int__().  For floating point
-     |  numbers, this truncates towards zero.
+     |  Wasi
      |  
-     |  If x is not a number or if base is given, then x must be a string,
-     |  bytes, or bytearray instance representing an integer literal in the
-     |  given base.  The literal can be preceded by &#39;+&#39; or &#39;-&#39; and be surrounded
-     |  by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-     |  Base 0 means to interpret the base from the string as an integer literal.
-     |  &gt;&gt;&gt; int(&#39;0b100&#39;, base=0)
-     |  4
+     |  WasmEdge
      |  
      |  Method resolution order:
      |      Host
-     |      Boost.Python.enum
-     |      builtins.int
+     |      pybind11_builtins.pybind11_object
      |      builtins.object
      |  
-     |  Data and other attributes defined here:
+     |  Methods defined here:
      |  
-     |  Wasi = WasmEdge.Host.Wasi
+     |  __eq__(...)
+     |      __eq__(self: object, other: object) -&gt; bool
      |  
-     |  WasmEdge = WasmEdge.Host.WasmEdge
+     |  __getstate__(...)
+     |      __getstate__(self: object) -&gt; int
      |  
-     |  names = {&#39;Wasi&#39;: WasmEdge.Host.Wasi, &#39;WasmEdge&#39;: WasmEdge.Host.WasmEdg...
+     |  __hash__(...)
+     |      __hash__(self: object) -&gt; int
      |  
-     |  values = {0: WasmEdge.Host.Wasi, 1: WasmEdge.Host.WasmEdge}
-     |  
-     |  ----------------------------------------------------------------------
-     |  Methods inherited from Boost.Python.enum:
-     |  
-     |  __repr__(self, /)
-     |      Return repr(self).
-     |  
-     |  __str__(self, /)
-     |      Return str(self).
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.enum:
-     |  
-     |  name
-     |  
-     |  ----------------------------------------------------------------------
-     |  Methods inherited from builtins.int:
-     |  
-     |  __abs__(self, /)
-     |      abs(self)
-     |  
-     |  __add__(self, value, /)
-     |      Return self+value.
-     |  
-     |  __and__(self, value, /)
-     |      Return self&amp;value.
-     |  
-     |  __bool__(self, /)
-     |      self != 0
-     |  
-     |  __ceil__(...)
-     |      Ceiling of an Integral returns itself.
-     |  
-     |  __divmod__(self, value, /)
-     |      Return divmod(self, value).
-     |  
-     |  __eq__(self, value, /)
-     |      Return self==value.
-     |  
-     |  __float__(self, /)
-     |      float(self)
-     |  
-     |  __floor__(...)
-     |      Flooring an Integral returns itself.
-     |  
-     |  __floordiv__(self, value, /)
-     |      Return self//value.
-     |  
-     |  __format__(self, format_spec, /)
-     |      Default object formatter.
-     |  
-     |  __ge__(self, value, /)
-     |      Return self&gt;=value.
-     |  
-     |  __getattribute__(self, name, /)
-     |      Return getattr(self, name).
-     |  
-     |  __getnewargs__(self, /)
-     |  
-     |  __gt__(self, value, /)
-     |      Return self&gt;value.
-     |  
-     |  __hash__(self, /)
-     |      Return hash(self).
-     |  
-     |  __index__(self, /)
-     |      Return self converted to an integer, if self is suitable for use as an index into a list.
-     |  
-     |  __int__(self, /)
-     |      int(self)
-     |  
-     |  __invert__(self, /)
-     |      ~self
-     |  
-     |  __le__(self, value, /)
-     |      Return self&lt;=value.
-     |  
-     |  __lshift__(self, value, /)
-     |      Return self&lt;&lt;value.
-     |  
-     |  __lt__(self, value, /)
-     |      Return self&lt;value.
-     |  
-     |  __mod__(self, value, /)
-     |      Return self%value.
-     |  
-     |  __mul__(self, value, /)
-     |      Return self*value.
-     |  
-     |  __ne__(self, value, /)
-     |      Return self!=value.
-     |  
-     |  __neg__(self, /)
-     |      -self
-     |  
-     |  __or__(self, value, /)
-     |      Return self|value.
-     |  
-     |  __pos__(self, /)
-     |      +self
-     |  
-     |  __pow__(self, value, mod=None, /)
-     |      Return pow(self, value, mod).
-     |  
-     |  __radd__(self, value, /)
-     |      Return value+self.
-     |  
-     |  __rand__(self, value, /)
-     |      Return value&amp;self.
-     |  
-     |  __rdivmod__(self, value, /)
-     |      Return divmod(value, self).
-     |  
-     |  __rfloordiv__(self, value, /)
-     |      Return value//self.
-     |  
-     |  __rlshift__(self, value, /)
-     |      Return value&lt;&lt;self.
-     |  
-     |  __rmod__(self, value, /)
-     |      Return value%self.
-     |  
-     |  __rmul__(self, value, /)
-     |      Return value*self.
-     |  
-     |  __ror__(self, value, /)
-     |      Return value|self.
-     |  
-     |  __round__(...)
-     |      Rounding an Integral returns itself.
-     |      Rounding with an ndigits argument also returns an integer.
-     |  
-     |  __rpow__(self, value, mod=None, /)
-     |      Return pow(value, self, mod).
-     |  
-     |  __rrshift__(self, value, /)
-     |      Return value&gt;&gt;self.
-     |  
-     |  __rshift__(self, value, /)
-     |      Return self&gt;&gt;value.
-     |  
-     |  __rsub__(self, value, /)
-     |      Return value-self.
-     |  
-     |  __rtruediv__(self, value, /)
-     |      Return value/self.
-     |  
-     |  __rxor__(self, value, /)
-     |      Return value^self.
-     |  
-     |  __sizeof__(self, /)
-     |      Returns size in memory, in bytes.
-     |  
-     |  __sub__(self, value, /)
-     |      Return self-value.
-     |  
-     |  __truediv__(self, value, /)
-     |      Return self/value.
-     |  
-     |  __trunc__(...)
-     |      Truncating an Integral returns itself.
-     |  
-     |  __xor__(self, value, /)
-     |      Return self^value.
-     |  
-     |  as_integer_ratio(self, /)
-     |      Return integer ratio.
-     |      
-     |      Return a pair of integers, whose ratio is exactly equal to the original int
-     |      and with a positive denominator.
-     |      
-     |      &gt;&gt;&gt; (10).as_integer_ratio()
-     |      (10, 1)
-     |      &gt;&gt;&gt; (-10).as_integer_ratio()
-     |      (-10, 1)
-     |      &gt;&gt;&gt; (0).as_integer_ratio()
-     |      (0, 1)
-     |  
-     |  bit_length(self, /)
-     |      Number of bits necessary to represent self in binary.
-     |      
-     |      &gt;&gt;&gt; bin(37)
-     |      &#39;0b100101&#39;
-     |      &gt;&gt;&gt; (37).bit_length()
-     |      6
-     |  
-     |  conjugate(...)
-     |      Returns self, the complex conjugate of any int.
-     |  
-     |  to_bytes(self, /, length, byteorder, *, signed=False)
-     |      Return an array of bytes representing an integer.
-     |      
-     |      length
-     |        Length of bytes object to use.  An OverflowError is raised if the
-     |        integer is not representable with the given number of bytes.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder&#39; as the byte order value.
-     |      signed
-     |        Determines whether two&#39;s complement is used to represent the integer.
-     |        If signed is False and a negative integer is given, an OverflowError
-     |        is raised.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Class methods inherited from builtins.int:
-     |  
-     |  from_bytes(bytes, byteorder, *, signed=False) from builtins.type
-     |      Return the integer represented by the given array of bytes.
-     |      
-     |      bytes
-     |        Holds the array of bytes to convert.  The argument must either
-     |        support the buffer protocol or be an iterable object producing bytes.
-     |        Bytes and bytearray are examples of built-in objects that support the
-     |        buffer protocol.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder&#39; as the byte order value.
-     |      signed
-     |        Indicates whether two&#39;s complement is used to represent the integer.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods inherited from builtins.int:
-     |  
-     |  __new__(*args, **kwargs) from builtins.type
-     |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from builtins.int:
-     |  
-     |  denominator
-     |      the denominator of a rational number in lowest terms
-     |  
-     |  imag
-     |      the imaginary part of a complex number
-     |  
-     |  numerator
-     |      the numerator of a rational number in lowest terms
-     |  
-     |  real
-     |      the real part of a complex number
-
-    class Logging(Boost.Python.instance)
-     |  Method resolution order:
-     |      Logging
-     |      Boost.Python.instance
-     |      builtins.object
-     |  
-     |  Static methods defined here:
+     |  __index__(...)
+     |      __index__(self: WasmEdge.Host) -&gt; int
      |  
      |  __init__(...)
-     |      __init__( (object)arg1) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*)
+     |      __init__(self: WasmEdge.Host, value: int) -&gt; None
      |  
-     |  __reduce__ = &lt;unnamed Boost.Python function&gt;(...)
+     |  __int__(...)
+     |      __int__(self: WasmEdge.Host) -&gt; int
      |  
-     |  __str__(...)
-     |      __str__( (Logging)arg1) -&gt; str :
-     |      
-     |          C++ signature :
-     |              char const* __str__(pysdk::logging {lvalue})
+     |  __ne__(...)
+     |      __ne__(self: object, other: object) -&gt; bool
      |  
-     |  debug(...)
-     |      debug() -&gt; None :
-     |      
-     |          C++ signature :
-     |              void debug()
+     |  __repr__(...)
+     |      __repr__(self: object) -&gt; str
      |  
-     |  error(...)
-     |      error() -&gt; None :
-     |      
-     |          C++ signature :
-     |              void error()
+     |  __setstate__(...)
+     |      __setstate__(self: WasmEdge.Host, state: int) -&gt; None
+     |  
+     |  __str__ = name(...)
+     |      name(self: handle) -&gt; str
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  __members__
+     |  
+     |  name
+     |      name(self: handle) -&gt; str
+     |  
+     |  value
      |  
      |  ----------------------------------------------------------------------
      |  Data and other attributes defined here:
      |  
-     |  __instance_size__ = 24
+     |  Wasi = &lt;Host.Wasi: 0&gt;
+     |  
+     |  WasmEdge = &lt;Host.WasmEdge: 1&gt;
      |  
      |  ----------------------------------------------------------------------
-     |  Static methods inherited from Boost.Python.instance:
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
      |  
-     |  __new__(*args, **kwargs) from Boost.Python.class
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
+
+    class Logging(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      Logging
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Logging) -&gt; None
+     |  
+     |  __str__(...)
+     |      __str__(self: WasmEdge.Logging) -&gt; str
      |  
      |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.instance:
+     |  Static methods defined here:
      |  
-     |  __dict__
+     |  debug(...) from builtins.PyCapsule
+     |      debug() -&gt; None
      |  
-     |  __weakref__
+     |  error(...) from builtins.PyCapsule
+     |      error() -&gt; None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
 
-    class Proposal(Boost.Python.enum)
-     |  int([x]) -&gt; integer
-     |  int(x, base=10) -&gt; integer
+    class Proposal(pybind11_builtins.pybind11_object)
+     |  Members:
      |  
-     |  Convert a number or string to an integer, or return 0 if no arguments
-     |  are given.  If x is a number, return x.__int__().  For floating point
-     |  numbers, this truncates towards zero.
+     |  ImportExportMutGlobals
      |  
-     |  If x is not a number or if base is given, then x must be a string,
-     |  bytes, or bytearray instance representing an integer literal in the
-     |  given base.  The literal can be preceded by &#39;+&#39; or &#39;-&#39; and be surrounded
-     |  by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-     |  Base 0 means to interpret the base from the string as an integer literal.
-     |  &gt;&gt;&gt; int(&#39;0b100&#39;, base=0)
-     |  4
+     |  NonTrapFloatToIntConversions
+     |  
+     |  BulkMemoryOperations
+     |  
+     |  ReferenceTypes
+     |  
+     |  SIMD
+     |  
+     |  TailCall
+     |  
+     |  Annotations
+     |  
+     |  Memory64
+     |  
+     |  Threads
+     |  
+     |  ExceptionHandling
+     |  
+     |  FunctionReferences
      |  
      |  Method resolution order:
      |      Proposal
-     |      Boost.Python.enum
-     |      builtins.int
+     |      pybind11_builtins.pybind11_object
      |      builtins.object
      |  
-     |  Data and other attributes defined here:
+     |  Methods defined here:
      |  
-     |  Annotations = WasmEdge.Proposal.Annotations
+     |  __eq__(...)
+     |      __eq__(self: object, other: object) -&gt; bool
      |  
-     |  BulkMemoryOperations = WasmEdge.Proposal.BulkMemoryOperations
+     |  __getstate__(...)
+     |      __getstate__(self: object) -&gt; int
      |  
-     |  ExceptionHandling = WasmEdge.Proposal.ExceptionHandling
+     |  __hash__(...)
+     |      __hash__(self: object) -&gt; int
      |  
-     |  FunctionReferences = WasmEdge.Proposal.FunctionReferences
+     |  __index__(...)
+     |      __index__(self: WasmEdge.Proposal) -&gt; int
      |  
-     |  Memory64 = WasmEdge.Proposal.Memory64
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Proposal, value: int) -&gt; None
      |  
-     |  NonTrapFloatToIntConversions = WasmEdge.Proposal.NonTrapFloatToIntConv...
+     |  __int__(...)
+     |      __int__(self: WasmEdge.Proposal) -&gt; int
      |  
-     |  ReferenceTypes = WasmEdge.Proposal.ReferenceTypes
+     |  __ne__(...)
+     |      __ne__(self: object, other: object) -&gt; bool
      |  
-     |  SIMD = WasmEdge.Proposal.SIMD
+     |  __repr__(...)
+     |      __repr__(self: object) -&gt; str
      |  
-     |  TailCall = WasmEdge.Proposal.TailCall
+     |  __setstate__(...)
+     |      __setstate__(self: WasmEdge.Proposal, state: int) -&gt; None
      |  
-     |  Threads = WasmEdge.Proposal.Threads
-     |  
-     |  names = {&#39;Annotations&#39;: WasmEdge.Proposal.Annotations, &#39;BulkMemoryOper...
-     |  
-     |  values = {0: WasmEdge.Proposal.BulkMemoryOperations, 1: WasmEdge.Propo...
-     |  
-     |  ----------------------------------------------------------------------
-     |  Methods inherited from Boost.Python.enum:
-     |  
-     |  __repr__(self, /)
-     |      Return repr(self).
-     |  
-     |  __str__(self, /)
-     |      Return str(self).
+     |  __str__ = name(...)
+     |      name(self: handle) -&gt; str
      |  
      |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.enum:
+     |  Readonly properties defined here:
+     |  
+     |  __members__
      |  
      |  name
+     |      name(self: handle) -&gt; str
+     |  
+     |  value
      |  
      |  ----------------------------------------------------------------------
-     |  Methods inherited from builtins.int:
+     |  Data and other attributes defined here:
      |  
-     |  __abs__(self, /)
-     |      abs(self)
+     |  Annotations = &lt;Proposal.Annotations: 8&gt;
      |  
-     |  __add__(self, value, /)
-     |      Return self+value.
+     |  BulkMemoryOperations = &lt;Proposal.BulkMemoryOperations: 4&gt;
      |  
-     |  __and__(self, value, /)
-     |      Return self&amp;value.
+     |  ExceptionHandling = &lt;Proposal.ExceptionHandling: 11&gt;
      |  
-     |  __bool__(self, /)
-     |      self != 0
+     |  FunctionReferences = &lt;Proposal.FunctionReferences: 12&gt;
      |  
-     |  __ceil__(...)
-     |      Ceiling of an Integral returns itself.
+     |  ImportExportMutGlobals = &lt;Proposal.ImportExportMutGlobals: 0&gt;
      |  
-     |  __divmod__(self, value, /)
-     |      Return divmod(self, value).
+     |  Memory64 = &lt;Proposal.Memory64: 9&gt;
      |  
-     |  __eq__(self, value, /)
-     |      Return self==value.
+     |  NonTrapFloatToIntConversions = &lt;Proposal.NonTrapFloatToIntConversions:...
      |  
-     |  __float__(self, /)
-     |      float(self)
+     |  ReferenceTypes = &lt;Proposal.ReferenceTypes: 5&gt;
      |  
-     |  __floor__(...)
-     |      Flooring an Integral returns itself.
+     |  SIMD = &lt;Proposal.SIMD: 6&gt;
      |  
-     |  __floordiv__(self, value, /)
-     |      Return self//value.
+     |  TailCall = &lt;Proposal.TailCall: 7&gt;
      |  
-     |  __format__(self, format_spec, /)
-     |      Default object formatter.
-     |  
-     |  __ge__(self, value, /)
-     |      Return self&gt;=value.
-     |  
-     |  __getattribute__(self, name, /)
-     |      Return getattr(self, name).
-     |  
-     |  __getnewargs__(self, /)
-     |  
-     |  __gt__(self, value, /)
-     |      Return self&gt;value.
-     |  
-     |  __hash__(self, /)
-     |      Return hash(self).
-     |  
-     |  __index__(self, /)
-     |      Return self converted to an integer, if self is suitable for use as an index into a list.
-     |  
-     |  __int__(self, /)
-     |      int(self)
-     |  
-     |  __invert__(self, /)
-     |      ~self
-     |  
-     |  __le__(self, value, /)
-     |      Return self&lt;=value.
-     |  
-     |  __lshift__(self, value, /)
-     |      Return self&lt;&lt;value.
-     |  
-     |  __lt__(self, value, /)
-     |      Return self&lt;value.
-     |  
-     |  __mod__(self, value, /)
-     |      Return self%value.
-     |  
-     |  __mul__(self, value, /)
-     |      Return self*value.
-     |  
-     |  __ne__(self, value, /)
-     |      Return self!=value.
-     |  
-     |  __neg__(self, /)
-     |      -self
-     |  
-     |  __or__(self, value, /)
-     |      Return self|value.
-     |  
-     |  __pos__(self, /)
-     |      +self
-     |  
-     |  __pow__(self, value, mod=None, /)
-     |      Return pow(self, value, mod).
-     |  
-     |  __radd__(self, value, /)
-     |      Return value+self.
-     |  
-     |  __rand__(self, value, /)
-     |      Return value&amp;self.
-     |  
-     |  __rdivmod__(self, value, /)
-     |      Return divmod(value, self).
-     |  
-     |  __rfloordiv__(self, value, /)
-     |      Return value//self.
-     |  
-     |  __rlshift__(self, value, /)
-     |      Return value&lt;&lt;self.
-     |  
-     |  __rmod__(self, value, /)
-     |      Return value%self.
-     |  
-     |  __rmul__(self, value, /)
-     |      Return value*self.
-     |  
-     |  __ror__(self, value, /)
-     |      Return value|self.
-     |  
-     |  __round__(...)
-     |      Rounding an Integral returns itself.
-     |      Rounding with an ndigits argument also returns an integer.
-     |  
-     |  __rpow__(self, value, mod=None, /)
-     |      Return pow(value, self, mod).
-     |  
-     |  __rrshift__(self, value, /)
-     |      Return value&gt;&gt;self.
-     |  
-     |  __rshift__(self, value, /)
-     |      Return self&gt;&gt;value.
-     |  
-     |  __rsub__(self, value, /)
-     |      Return value-self.
-     |  
-     |  __rtruediv__(self, value, /)
-     |      Return value/self.
-     |  
-     |  __rxor__(self, value, /)
-     |      Return value^self.
-     |  
-     |  __sizeof__(self, /)
-     |      Returns size in memory, in bytes.
-     |  
-     |  __sub__(self, value, /)
-     |      Return self-value.
-     |  
-     |  __truediv__(self, value, /)
-     |      Return self/value.
-     |  
-     |  __trunc__(...)
-     |      Truncating an Integral returns itself.
-     |  
-     |  __xor__(self, value, /)
-     |      Return self^value.
-     |  
-     |  as_integer_ratio(self, /)
-     |      Return integer ratio.
-     |      
-     |      Return a pair of integers, whose ratio is exactly equal to the original int
-     |      and with a positive denominator.
-     |      
-     |      &gt;&gt;&gt; (10).as_integer_ratio()
-     |      (10, 1)
-     |      &gt;&gt;&gt; (-10).as_integer_ratio()
-     |      (-10, 1)
-     |      &gt;&gt;&gt; (0).as_integer_ratio()
-     |      (0, 1)
-     |  
-     |  bit_length(self, /)
-     |      Number of bits necessary to represent self in binary.
-     |      
-     |      &gt;&gt;&gt; bin(37)
-     |      &#39;0b100101&#39;
-     |      &gt;&gt;&gt; (37).bit_length()
-     |      6
-     |  
-     |  conjugate(...)
-     |      Returns self, the complex conjugate of any int.
-     |  
-     |  to_bytes(self, /, length, byteorder, *, signed=False)
-     |      Return an array of bytes representing an integer.
-     |      
-     |      length
-     |        Length of bytes object to use.  An OverflowError is raised if the
-     |        integer is not representable with the given number of bytes.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder&#39; as the byte order value.
-     |      signed
-     |        Determines whether two&#39;s complement is used to represent the integer.
-     |        If signed is False and a negative integer is given, an OverflowError
-     |        is raised.
+     |  Threads = &lt;Proposal.Threads: 10&gt;
      |  
      |  ----------------------------------------------------------------------
-     |  Class methods inherited from builtins.int:
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
      |  
-     |  from_bytes(bytes, byteorder, *, signed=False) from builtins.type
-     |      Return the integer represented by the given array of bytes.
-     |      
-     |      bytes
-     |        Holds the array of bytes to convert.  The argument must either
-     |        support the buffer protocol or be an iterable object producing bytes.
-     |        Bytes and bytearray are examples of built-in objects that support the
-     |        buffer protocol.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder&#39; as the byte order value.
-     |      signed
-     |        Indicates whether two&#39;s complement is used to represent the integer.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods inherited from builtins.int:
-     |  
-     |  __new__(*args, **kwargs) from builtins.type
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from builtins.int:
-     |  
-     |  denominator
-     |      the denominator of a rational number in lowest terms
-     |  
-     |  imag
-     |      the imaginary part of a complex number
-     |  
-     |  numerator
-     |      the numerator of a rational number in lowest terms
-     |  
-     |  real
-     |      the real part of a complex number
 
-    class Result(Boost.Python.instance)
+    class Result(pybind11_builtins.pybind11_object)
      |  Method resolution order:
      |      Result
-     |      Boost.Python.instance
+     |      pybind11_builtins.pybind11_object
      |      builtins.object
      |  
-     |  Static methods defined here:
+     |  Methods defined here:
      |  
      |  __bool__(...)
-     |      __bool__( (Result)arg1) -&gt; bool :
-     |      
-     |          C++ signature :
-     |              bool __bool__(pysdk::result {lvalue})
+     |      __bool__(self: WasmEdge.Result) -&gt; bool
      |  
      |  __init__(...)
-     |      __init__( (object)arg1) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*)
-     |  
-     |  __reduce__ = &lt;unnamed Boost.Python function&gt;(...)
+     |      __init__(self: WasmEdge.Result) -&gt; None
      |  
      |  __str__(...)
-     |      __str__( (Result)arg1) -&gt; str :
-     |      
-     |          C++ signature :
-     |              char const* __str__(pysdk::result {lvalue})
+     |      __str__(self: WasmEdge.Result) -&gt; str
      |  
      |  code(...)
-     |      code( (Result)arg1) -&gt; int :
-     |      
-     |          C++ signature :
-     |              int code(pysdk::result {lvalue})
+     |      code(self: WasmEdge.Result) -&gt; int
      |  
      |  message(...)
-     |      message( (Result)arg1) -&gt; str :
-     |      
-     |          C++ signature :
-     |              char const* message(pysdk::result {lvalue})
+     |      message(self: WasmEdge.Result) -&gt; str
      |  
      |  ----------------------------------------------------------------------
-     |  Data and other attributes defined here:
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
      |  
-     |  __instance_size__ = 24
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods inherited from Boost.Python.instance:
-     |  
-     |  __new__(*args, **kwargs) from Boost.Python.class
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.instance:
-     |  
-     |  __dict__
-     |  
-     |  __weakref__
 
-    class Store(Boost.Python.instance)
+    class Store(pybind11_builtins.pybind11_object)
      |  Method resolution order:
      |      Store
-     |      Boost.Python.instance
+     |      pybind11_builtins.pybind11_object
      |      builtins.object
      |  
-     |  Static methods defined here:
+     |  Methods defined here:
      |  
      |  __init__(...)
-     |      __init__( (object)arg1) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*)
-     |  
-     |  __reduce__ = &lt;unnamed Boost.Python function&gt;(...)
+     |      __init__(self: WasmEdge.Store) -&gt; None
      |  
      |  listFunctions(...)
-     |      listFunctions( (Store)arg1, (int)arg2) -&gt; list :
-     |      
-     |          C++ signature :
-     |              boost::python::list listFunctions(pysdk::Store {lvalue},int)
+     |      listFunctions(self: WasmEdge.Store, arg0: int) -&gt; list
      |  
      |  listModules(...)
-     |      listModules( (Store)arg1, (int)arg2) -&gt; list :
-     |      
-     |          C++ signature :
-     |              boost::python::list listModules(pysdk::Store {lvalue},int)
+     |      listModules(self: WasmEdge.Store, arg0: int) -&gt; list
      |  
      |  ----------------------------------------------------------------------
-     |  Data and other attributes defined here:
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
      |  
-     |  __instance_size__ = 24
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods inherited from Boost.Python.instance:
-     |  
-     |  __new__(*args, **kwargs) from Boost.Python.class
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.instance:
-     |  
-     |  __dict__
-     |  
-     |  __weakref__
 
-    class Type(Boost.Python.enum)
-     |  int([x]) -&gt; integer
-     |  int(x, base=10) -&gt; integer
+    class Type(pybind11_builtins.pybind11_object)
+     |  Members:
      |  
-     |  Convert a number or string to an integer, or return 0 if no arguments
-     |  are given.  If x is a number, return x.__int__().  For floating point
-     |  numbers, this truncates towards zero.
+     |  I32
      |  
-     |  If x is not a number or if base is given, then x must be a string,
-     |  bytes, or bytearray instance representing an integer literal in the
-     |  given base.  The literal can be preceded by &#39;+&#39; or &#39;-&#39; and be surrounded
-     |  by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-     |  Base 0 means to interpret the base from the string as an integer literal.
-     |  &gt;&gt;&gt; int(&#39;0b100&#39;, base=0)
-     |  4
+     |  I64
+     |  
+     |  F32
+     |  
+     |  F64
+     |  
+     |  V128
+     |  
+     |  FuncRef
+     |  
+     |  ExternRef
      |  
      |  Method resolution order:
      |      Type
-     |      Boost.Python.enum
-     |      builtins.int
+     |      pybind11_builtins.pybind11_object
      |      builtins.object
      |  
-     |  Data and other attributes defined here:
+     |  Methods defined here:
      |  
-     |  ExternRef = WasmEdge.Type.ExternRef
+     |  __eq__(...)
+     |      __eq__(self: object, other: object) -&gt; bool
      |  
-     |  F32 = WasmEdge.Type.F32
+     |  __getstate__(...)
+     |      __getstate__(self: object) -&gt; int
      |  
-     |  F64 = WasmEdge.Type.F64
+     |  __hash__(...)
+     |      __hash__(self: object) -&gt; int
      |  
-     |  FuncRef = WasmEdge.Type.FuncRef
+     |  __index__(...)
+     |      __index__(self: WasmEdge.Type) -&gt; int
      |  
-     |  I32 = WasmEdge.Type.I32
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Type, value: int) -&gt; None
      |  
-     |  I64 = WasmEdge.Type.I64
+     |  __int__(...)
+     |      __int__(self: WasmEdge.Type) -&gt; int
      |  
-     |  V128 = WasmEdge.Type.V128
+     |  __ne__(...)
+     |      __ne__(self: object, other: object) -&gt; bool
      |  
-     |  names = {&#39;ExternRef&#39;: WasmEdge.Type.ExternRef, &#39;F32&#39;: WasmEdge.Type.F3...
+     |  __repr__(...)
+     |      __repr__(self: object) -&gt; str
      |  
-     |  values = {111: WasmEdge.Type.ExternRef, 112: WasmEdge.Type.FuncRef, 12...
+     |  __setstate__(...)
+     |      __setstate__(self: WasmEdge.Type, state: int) -&gt; None
+     |  
+     |  __str__ = name(...)
+     |      name(self: handle) -&gt; str
      |  
      |  ----------------------------------------------------------------------
-     |  Methods inherited from Boost.Python.enum:
+     |  Readonly properties defined here:
      |  
-     |  __repr__(self, /)
-     |      Return repr(self).
-     |  
-     |  __str__(self, /)
-     |      Return str(self).
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.enum:
+     |  __members__
      |  
      |  name
+     |      name(self: handle) -&gt; str
      |  
-     |  ----------------------------------------------------------------------
-     |  Methods inherited from builtins.int:
-     |  
-     |  __abs__(self, /)
-     |      abs(self)
-     |  
-     |  __add__(self, value, /)
-     |      Return self+value.
-     |  
-     |  __and__(self, value, /)
-     |      Return self&amp;value.
-     |  
-     |  __bool__(self, /)
-     |      self != 0
-     |  
-     |  __ceil__(...)
-     |      Ceiling of an Integral returns itself.
-     |  
-     |  __divmod__(self, value, /)
-     |      Return divmod(self, value).
-     |  
-     |  __eq__(self, value, /)
-     |      Return self==value.
-     |  
-     |  __float__(self, /)
-     |      float(self)
-     |  
-     |  __floor__(...)
-     |      Flooring an Integral returns itself.
-     |  
-     |  __floordiv__(self, value, /)
-     |      Return self//value.
-     |  
-     |  __format__(self, format_spec, /)
-     |      Default object formatter.
-     |  
-     |  __ge__(self, value, /)
-     |      Return self&gt;=value.
-     |  
-     |  __getattribute__(self, name, /)
-     |      Return getattr(self, name).
-     |  
-     |  __getnewargs__(self, /)
-     |  
-     |  __gt__(self, value, /)
-     |      Return self&gt;value.
-     |  
-     |  __hash__(self, /)
-     |      Return hash(self).
-     |  
-     |  __index__(self, /)
-     |      Return self converted to an integer, if self is suitable for use as an index into a list.
-     |  
-     |  __int__(self, /)
-     |      int(self)
-     |  
-     |  __invert__(self, /)
-     |      ~self
-     |  
-     |  __le__(self, value, /)
-     |      Return self&lt;=value.
-     |  
-     |  __lshift__(self, value, /)
-     |      Return self&lt;&lt;value.
-     |  
-     |  __lt__(self, value, /)
-     |      Return self&lt;value.
-     |  
-     |  __mod__(self, value, /)
-     |      Return self%value.
-     |  
-     |  __mul__(self, value, /)
-     |      Return self*value.
-     |  
-     |  __ne__(self, value, /)
-     |      Return self!=value.
-     |  
-     |  __neg__(self, /)
-     |      -self
-     |  
-     |  __or__(self, value, /)
-     |      Return self|value.
-     |  
-     |  __pos__(self, /)
-     |      +self
-     |  
-     |  __pow__(self, value, mod=None, /)
-     |      Return pow(self, value, mod).
-     |  
-     |  __radd__(self, value, /)
-     |      Return value+self.
-     |  
-     |  __rand__(self, value, /)
-     |      Return value&amp;self.
-     |  
-     |  __rdivmod__(self, value, /)
-     |      Return divmod(value, self).
-     |  
-     |  __rfloordiv__(self, value, /)
-     |      Return value//self.
-     |  
-     |  __rlshift__(self, value, /)
-     |      Return value&lt;&lt;self.
-     |  
-     |  __rmod__(self, value, /)
-     |      Return value%self.
-     |  
-     |  __rmul__(self, value, /)
-     |      Return value*self.
-     |  
-     |  __ror__(self, value, /)
-     |      Return value|self.
-     |  
-     |  __round__(...)
-     |      Rounding an Integral returns itself.
-     |      Rounding with an ndigits argument also returns an integer.
-     |  
-     |  __rpow__(self, value, mod=None, /)
-     |      Return pow(value, self, mod).
-     |  
-     |  __rrshift__(self, value, /)
-     |      Return value&gt;&gt;self.
-     |  
-     |  __rshift__(self, value, /)
-     |      Return self&gt;&gt;value.
-     |  
-     |  __rsub__(self, value, /)
-     |      Return value-self.
-     |  
-     |  __rtruediv__(self, value, /)
-     |      Return value/self.
-     |  
-     |  __rxor__(self, value, /)
-     |      Return value^self.
-     |  
-     |  __sizeof__(self, /)
-     |      Returns size in memory, in bytes.
-     |  
-     |  __sub__(self, value, /)
-     |      Return self-value.
-     |  
-     |  __truediv__(self, value, /)
-     |      Return self/value.
-     |  
-     |  __trunc__(...)
-     |      Truncating an Integral returns itself.
-     |  
-     |  __xor__(self, value, /)
-     |      Return self^value.
-     |  
-     |  as_integer_ratio(self, /)
-     |      Return integer ratio.
-     |      
-     |      Return a pair of integers, whose ratio is exactly equal to the original int
-     |      and with a positive denominator.
-     |      
-     |      &gt;&gt;&gt; (10).as_integer_ratio()
-     |      (10, 1)
-     |      &gt;&gt;&gt; (-10).as_integer_ratio()
-     |      (-10, 1)
-     |      &gt;&gt;&gt; (0).as_integer_ratio()
-     |      (0, 1)
-     |  
-     |  bit_length(self, /)
-     |      Number of bits necessary to represent self in binary.
-     |      
-     |      &gt;&gt;&gt; bin(37)
-     |      &#39;0b100101&#39;
-     |      &gt;&gt;&gt; (37).bit_length()
-     |      6
-     |  
-     |  conjugate(...)
-     |      Returns self, the complex conjugate of any int.
-     |  
-     |  to_bytes(self, /, length, byteorder, *, signed=False)
-     |      Return an array of bytes representing an integer.
-     |      
-     |      length
-     |        Length of bytes object to use.  An OverflowError is raised if the
-     |        integer is not representable with the given number of bytes.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder&#39; as the byte order value.
-     |      signed
-     |        Determines whether two&#39;s complement is used to represent the integer.
-     |        If signed is False and a negative integer is given, an OverflowError
-     |        is raised.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Class methods inherited from builtins.int:
-     |  
-     |  from_bytes(bytes, byteorder, *, signed=False) from builtins.type
-     |      Return the integer represented by the given array of bytes.
-     |      
-     |      bytes
-     |        Holds the array of bytes to convert.  The argument must either
-     |        support the buffer protocol or be an iterable object producing bytes.
-     |        Bytes and bytearray are examples of built-in objects that support the
-     |        buffer protocol.
-     |      byteorder
-     |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
-     |        the most significant byte is at the beginning of the byte array.  If
-     |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
-     |        byte array.  To request the native byte order of the host system, use
-     |        `sys.byteorder&#39; as the byte order value.
-     |      signed
-     |        Indicates whether two&#39;s complement is used to represent the integer.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods inherited from builtins.int:
-     |  
-     |  __new__(*args, **kwargs) from builtins.type
-     |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from builtins.int:
-     |  
-     |  denominator
-     |      the denominator of a rational number in lowest terms
-     |  
-     |  imag
-     |      the imaginary part of a complex number
-     |  
-     |  numerator
-     |      the numerator of a rational number in lowest terms
-     |  
-     |  real
-     |      the real part of a complex number
-
-    class VM(Boost.Python.instance)
-     |  Method resolution order:
-     |      VM
-     |      Boost.Python.instance
-     |      builtins.object
-     |  
-     |  Static methods defined here:
-     |  
-     |  __init__(...)
-     |      __init__( (object)arg1) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*)
-     |      
-     |      __init__( (object)arg1, (Configure)arg2) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*,pysdk::Configure {lvalue})
-     |      
-     |      __init__( (object)arg1, (Store)arg2) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*,pysdk::Store {lvalue})
-     |      
-     |      __init__( (object)arg1, (Configure)arg2, (Store)arg3) -&gt; None :
-     |      
-     |          C++ signature :
-     |              void __init__(_object*,pysdk::Configure {lvalue},pysdk::Store {lvalue})
-     |  
-     |  __reduce__ = &lt;unnamed Boost.Python function&gt;(...)
-     |  
-     |  run(...)
-     |      run( (VM)arg1, (object)arg2, (object)arg3, (object)arg4, (object)arg5, (object)arg6) -&gt; tuple :
-     |      
-     |          C++ signature :
-     |              boost::python::tuple run(pysdk::VM {lvalue},boost::python::api::object,boost::python::api::object,boost::python::api::object,boost::python::api::object,boost::python::api::object)
-     |      
-     |      run( (VM)arg1, (object)arg2, (object)arg3, (object)arg4) -&gt; tuple :
-     |      
-     |          C++ signature :
-     |              boost::python::tuple run(pysdk::VM {lvalue},boost::python::api::object,boost::python::api::object,boost::python::api::object)
+     |  value
      |  
      |  ----------------------------------------------------------------------
      |  Data and other attributes defined here:
      |  
-     |  __instance_size__ = 24
+     |  ExternRef = &lt;Type.ExternRef: 111&gt;
+     |  
+     |  F32 = &lt;Type.F32: 125&gt;
+     |  
+     |  F64 = &lt;Type.F64: 124&gt;
+     |  
+     |  FuncRef = &lt;Type.FuncRef: 112&gt;
+     |  
+     |  I32 = &lt;Type.I32: 127&gt;
+     |  
+     |  I64 = &lt;Type.I64: 126&gt;
+     |  
+     |  V128 = &lt;Type.V128: 123&gt;
      |  
      |  ----------------------------------------------------------------------
-     |  Static methods inherited from Boost.Python.instance:
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
      |  
-     |  __new__(*args, **kwargs) from Boost.Python.class
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.instance:
-     |  
-     |  __dict__
-     |  
-     |  __weakref__
 
-    class Value(Boost.Python.instance)
+    class VM(pybind11_builtins.pybind11_object)
      |  Method resolution order:
-     |      Value
-     |      Boost.Python.instance
+     |      VM
+     |      pybind11_builtins.pybind11_object
      |      builtins.object
      |  
-     |  Static methods defined here:
+     |  Methods defined here:
      |  
      |  __init__(...)
-     |      __init__( (object)arg1) -&gt; None :
+     |      __init__(*args, **kwargs)
+     |      Overloaded function.
      |      
-     |          C++ signature :
-     |              void __init__(_object*)
+     |      1. __init__(self: WasmEdge.VM) -&gt; None
+     |      
+     |      2. __init__(self: WasmEdge.VM, arg0: WasmEdge.Configure) -&gt; None
+     |      
+     |      3. __init__(self: WasmEdge.VM, arg0: WasmEdge.Store) -&gt; None
+     |      
+     |      4. __init__(self: WasmEdge.VM, arg0: WasmEdge.Configure, arg1: WasmEdge.Store) -&gt; None
      |  
-     |  __reduce__ = &lt;unnamed Boost.Python function&gt;(...)
+     |  run(...)
+     |      run(*args, **kwargs)
+     |      Overloaded function.
+     |      
+     |      1. run(self: WasmEdge.VM, arg0: object, arg1: object, arg2: object, arg3: object, arg4: object) -&gt; tuple
+     |      
+     |      2. run(self: WasmEdge.VM, arg0: object, arg1: object, arg2: object) -&gt; tuple
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class Value(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      Value
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Value) -&gt; None
      |  
      |  ----------------------------------------------------------------------
      |  Data descriptors defined here:
@@ -1473,53 +740,39 @@ CLASSES
      |  Value
      |  
      |  ----------------------------------------------------------------------
-     |  Data and other attributes defined here:
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
      |  
-     |  __instance_size__ = 48
-     |  
-     |  ----------------------------------------------------------------------
-     |  Static methods inherited from Boost.Python.instance:
-     |  
-     |  __new__(*args, **kwargs) from Boost.Python.class
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
-     |  
-     |  ----------------------------------------------------------------------
-     |  Data descriptors inherited from Boost.Python.instance:
-     |  
-     |  __dict__
-     |  
-     |  __weakref__
 
 FUNCTIONS
-    version(...)
-        version() -&gt; str :
-
-            C++ signature :
-                char const* version()
+    version(...) method of builtins.PyCapsule instance
+        version() -&gt; str
 
 DATA
-    Annotations = WasmEdge.Proposal.Annotations
-    BulkMemoryOperations = WasmEdge.Proposal.BulkMemoryOperations
-    ExceptionHandling = WasmEdge.Proposal.ExceptionHandling
-    ExternRef = WasmEdge.Type.ExternRef
-    F32 = WasmEdge.Type.F32
-    F64 = WasmEdge.Type.F64
-    FuncRef = WasmEdge.Type.FuncRef
-    FunctionReferences = WasmEdge.Proposal.FunctionReferences
-    I32 = WasmEdge.Type.I32
-    I64 = WasmEdge.Type.I64
-    Memory64 = WasmEdge.Proposal.Memory64
-    NonTrapFloatToIntConversions = WasmEdge.Proposal.NonTrapFloatToIntConv...
-    ReferenceTypes = WasmEdge.Proposal.ReferenceTypes
-    SIMD = WasmEdge.Proposal.SIMD
-    TailCall = WasmEdge.Proposal.TailCall
-    Threads = WasmEdge.Proposal.Threads
-    V128 = WasmEdge.Type.V128
-    Wasi = WasmEdge.Host.Wasi
-    WasmEdge = WasmEdge.Host.WasmEdge
+    Annotations = &lt;Proposal.Annotations: 8&gt;
+    BulkMemoryOperations = &lt;Proposal.BulkMemoryOperations: 4&gt;
+    ExceptionHandling = &lt;Proposal.ExceptionHandling: 11&gt;
+    ExternRef = &lt;Type.ExternRef: 111&gt;
+    F32 = &lt;Type.F32: 125&gt;
+    F64 = &lt;Type.F64: 124&gt;
+    FuncRef = &lt;Type.FuncRef: 112&gt;
+    FunctionReferences = &lt;Proposal.FunctionReferences: 12&gt;
+    I32 = &lt;Type.I32: 127&gt;
+    I64 = &lt;Type.I64: 126&gt;
+    ImportExportMutGlobals = &lt;Proposal.ImportExportMutGlobals: 0&gt;
+    Memory64 = &lt;Proposal.Memory64: 9&gt;
+    NonTrapFloatToIntConversions = &lt;Proposal.NonTrapFloatToIntConversions:...
+    ReferenceTypes = &lt;Proposal.ReferenceTypes: 5&gt;
+    SIMD = &lt;Proposal.SIMD: 6&gt;
+    TailCall = &lt;Proposal.TailCall: 7&gt;
+    Threads = &lt;Proposal.Threads: 10&gt;
+    V128 = &lt;Type.V128: 123&gt;
+    Wasi = &lt;Host.Wasi: 0&gt;
+    WasmEdge = &lt;Host.WasmEdge: 1&gt;
 
 FILE
-    /home/satacker/wasm_work/WasmEdge/bindings/python/WasmEdge.so
+    /home/satacker/wasm_work/WasmEdge/bindings/python/WasmEdge.cpython-38-x86_64-linux-gnu.so
 </code></pre></div>
                 
               
