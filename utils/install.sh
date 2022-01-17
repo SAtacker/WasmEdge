@@ -624,7 +624,7 @@ main() {
         fi
     fi
 
-    local _grep=$(cat "$__HOME__/$_shell_rc" | grep "$IPATH/env")
+    local _grep=$(cat "$__HOME__/$_shell_rc" 2>/dev/null | grep "$IPATH/env")
     if [ "$_grep" = "" ]; then
         if [ ! -f "$__HOME__/$_shell_rc" ]; then
             echo "Generating $__HOME__/$_shell_rc"
