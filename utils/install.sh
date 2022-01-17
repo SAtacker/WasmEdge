@@ -159,6 +159,24 @@ detect_os_arch() {
             IM_EXT_COMPAT=0
             TF_EXT_COMPAT=0
         fi
+
+        if [[ "$(cat /etc/issue 2>/dev/null)" =~ "Alpine" ]]; then
+            echo "Found Alpine Linux"
+            echo "Adding glibc"
+            GLIBC_REPO="${GLIBC_REPO:-https://github.com/sgerrand/alpine-pkg-glibc}"
+            GLIBC_VERSION="${GLIBC_VERSION:-$(git ls-remote --refs --tags "$GLIBC_REPO.git" |
+                cut -d '/' -f 3 |
+                sort --version-sort | grep -e '^[0-9].[0-9]*' | tail -1)}"
+            echo "glib version $GLIBC_VERSION"
+            echo "glib repo $GLIBC_REPO"
+            mkdir -p "$TMP_DIR"
+            ls -l "$TMP_DIR"
+            _downloader "https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub"
+            mv $TMP_DIR/sgerrand.rsa.pub /etc/apk/keys/sgerrand.rsa.pub
+            _downloader "$GLIBC_REPO/releases/download/$GLIBC_VERSION/glibc-$GLIBC_VERSION.apk"
+            apk add "$TMP_DIR/glibc-$GLIBC_VERSION.apk"
+        fi
+
         ;;
     'Darwin')
         case $ARCH in
@@ -374,6 +392,8 @@ wasmedge_checks() {
         local version=$1
         shift
         for var in "$@"; do
+            ls $IPATH/bin/
+            ls $TMP_DIR/*/*
             local V=$("$IPATH/bin/$var" --version | sed 's/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/')
             local V_=$(echo $version | sed 's/\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/')
             if [ "$V" = "$V_" ]; then
