@@ -163,6 +163,26 @@ detect_os_arch() {
             exit 1
             ;;
         esac
+
+        if [[ "$(cat /etc/issue 2>/dev/null)" =~ "Alpine" ]]; then
+            echo "Found Alpine Linux"
+            echo "Adding glibc"
+            GLIBC_REPO="${GLIBC_REPO:-https://github.com/sgerrand/alpine-pkg-glibc}"
+            GLIBC_VERSION="${GLIBC_VERSION:-$(git ls-remote --refs --tags "$GLIBC_REPO.git" |
+                cut -d '/' -f 3 |
+                sort --version-sort | grep -e '^[0-9].[0-9]*' | tail -1)}"
+            echo "glib version $GLIBC_VERSION"
+            echo "glib repo $GLIBC_REPO"
+            mkdir -p "$TMP_DIR"
+            apk --update add libstdc++ curl ca-certificates
+            _downloader "https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub"
+            mv $TMP_DIR/sgerrand.rsa.pub /etc/apk/keys/sgerrand.rsa.pub
+            _downloader "$GLIBC_REPO/releases/download/$GLIBC_VERSION/glibc-$GLIBC_VERSION.apk"
+            _downloader "$GLIBC_REPO/releases/download/$GLIBC_VERSION/glibc-bin-$GLIBC_VERSION.apk"
+            apk add --allow-untrusted "$TMP_DIR/glibc-$GLIBC_VERSION.apk" "$TMP_DIR/glibc-bin-$GLIBC_VERSION.apk"
+            /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
+        fi
+
         ;;
     'Darwin')
         case $ARCH in
