@@ -306,14 +306,23 @@ CLASSES
         Configure
         Executor
         Function
+        GlobalType
         Host
         ImportObject
+        Limit
         Loader
         Logging
+        Memory
+        MemoryType
+        Mutability
         Optimization
         Proposal
+        Ref
+        RefType
         Result
         Store
+        Table
+        TableType
         Type
         VM
         Validator
@@ -489,6 +498,29 @@ CLASSES
      |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
 
+    class GlobalType(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      GlobalType
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  GetMutability(...)
+     |      GetMutability(self: WasmEdge.GlobalType) -&gt; WasmEdge.Mutability
+     |  
+     |  GetValType(...)
+     |      GetValType(self: WasmEdge.GlobalType) -&gt; WasmEdge.Type
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.GlobalType, arg0: WasmEdge.Type, arg1: WasmEdge.Mutability) -&gt; None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
     class Host(pybind11_builtins.pybind11_object)
      |  Members:
      |  
@@ -576,6 +608,32 @@ CLASSES
      |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
 
+    class Limit(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      Limit
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Limit, arg0: bool, arg1: int, arg2: int) -&gt; None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  HasMax
+     |  
+     |  Max
+     |  
+     |  Min
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
     class Loader(pybind11_builtins.pybind11_object)
      |  Method resolution order:
      |      Loader
@@ -623,6 +681,122 @@ CLASSES
      |  
      |  error(...) from builtins.PyCapsule
      |      error() -&gt; None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class Memory(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      Memory
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  GetData(...)
+     |      GetData(self: WasmEdge.Memory, arg0: int, arg1: int) -&gt; tuple
+     |  
+     |  GetPageSize(...)
+     |      GetPageSize(self: WasmEdge.Memory) -&gt; int
+     |  
+     |  GrowPage(...)
+     |      GrowPage(self: WasmEdge.Memory, arg0: int) -&gt; WasmEdge.Result
+     |  
+     |  SetData(...)
+     |      SetData(self: WasmEdge.Memory, arg0: tuple, arg1: int) -&gt; WasmEdge.Result
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Memory, arg0: WasmEdge.MemoryType) -&gt; None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class MemoryType(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      MemoryType
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  GetLimit(...)
+     |      GetLimit(self: WasmEdge.MemoryType) -&gt; WasmEdge.Limit
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.MemoryType, arg0: WasmEdge.Limit) -&gt; None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class Mutability(pybind11_builtins.pybind11_object)
+     |  Members:
+     |  
+     |  Var
+     |  
+     |  Const
+     |  
+     |  Method resolution order:
+     |      Mutability
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __eq__(...)
+     |      __eq__(self: object, other: object) -&gt; bool
+     |  
+     |  __getstate__(...)
+     |      __getstate__(self: object) -&gt; int
+     |  
+     |  __hash__(...)
+     |      __hash__(self: object) -&gt; int
+     |  
+     |  __index__(...)
+     |      __index__(self: WasmEdge.Mutability) -&gt; int
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Mutability, value: int) -&gt; None
+     |  
+     |  __int__(...)
+     |      __int__(self: WasmEdge.Mutability) -&gt; int
+     |  
+     |  __ne__(...)
+     |      __ne__(self: object, other: object) -&gt; bool
+     |  
+     |  __repr__(...)
+     |      __repr__(self: object) -&gt; str
+     |  
+     |  __setstate__(...)
+     |      __setstate__(self: WasmEdge.Mutability, state: int) -&gt; None
+     |  
+     |  __str__ = name(...)
+     |      name(self: handle) -&gt; str
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  __members__
+     |  
+     |  name
+     |      name(self: handle) -&gt; str
+     |  
+     |  value
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  Const = &lt;Mutability.Const: 0&gt;
+     |  
+     |  Var = &lt;Mutability.Var: 1&gt;
      |  
      |  ----------------------------------------------------------------------
      |  Static methods inherited from pybind11_builtins.pybind11_object:
@@ -816,6 +990,103 @@ CLASSES
      |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
      |      Create and return a new object.  See help(type) for accurate signature.
 
+    class Ref(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      Ref
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  FuncIdx(...)
+     |      FuncIdx(self: WasmEdge.Ref) -&gt; int
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Ref, type: object, ref_obj: object = None) -&gt; None
+     |  
+     |  isNull(...)
+     |      isNull(self: WasmEdge.Ref) -&gt; bool
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  Type
+     |  
+     |  Value
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class RefType(pybind11_builtins.pybind11_object)
+     |  Members:
+     |  
+     |  FuncRef
+     |  
+     |  ExternRef
+     |  
+     |  Method resolution order:
+     |      RefType
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __eq__(...)
+     |      __eq__(self: object, other: object) -&gt; bool
+     |  
+     |  __getstate__(...)
+     |      __getstate__(self: object) -&gt; int
+     |  
+     |  __hash__(...)
+     |      __hash__(self: object) -&gt; int
+     |  
+     |  __index__(...)
+     |      __index__(self: WasmEdge.RefType) -&gt; int
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.RefType, value: int) -&gt; None
+     |  
+     |  __int__(...)
+     |      __int__(self: WasmEdge.RefType) -&gt; int
+     |  
+     |  __ne__(...)
+     |      __ne__(self: object, other: object) -&gt; bool
+     |  
+     |  __repr__(...)
+     |      __repr__(self: object) -&gt; str
+     |  
+     |  __setstate__(...)
+     |      __setstate__(self: WasmEdge.RefType, state: int) -&gt; None
+     |  
+     |  __str__ = name(...)
+     |      name(self: handle) -&gt; str
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  __members__
+     |  
+     |  name
+     |      name(self: handle) -&gt; str
+     |  
+     |  value
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  ExternRef = &lt;RefType.ExternRef: 111&gt;
+     |  
+     |  FuncRef = &lt;RefType.FuncRef: 112&gt;
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
     class Result(pybind11_builtins.pybind11_object)
      |  Method resolution order:
      |      Result
@@ -864,6 +1135,61 @@ CLASSES
      |  
      |  listRegisteredFunctions(...)
      |      listRegisteredFunctions(self: WasmEdge.Store, arg0: str) -&gt; list
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class Table(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      Table
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  GetData(...)
+     |      GetData(self: WasmEdge.Table, arg0: int) -&gt; tuple
+     |  
+     |  GetSize(...)
+     |      GetSize(self: WasmEdge.Table) -&gt; int
+     |  
+     |  GetType(...)
+     |      GetType(self: WasmEdge.Table) -&gt; WasmEdge.TableType
+     |  
+     |  GrowSize(...)
+     |      GrowSize(self: WasmEdge.Table, arg0: int) -&gt; WasmEdge.Result
+     |  
+     |  SetData(...)
+     |      SetData(self: WasmEdge.Table, arg0: WasmEdge.Value, arg1: int) -&gt; WasmEdge.Result
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.Table, arg0: WasmEdge.TableType) -&gt; None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from pybind11_builtins.pybind11_object:
+     |  
+     |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class TableType(pybind11_builtins.pybind11_object)
+     |  Method resolution order:
+     |      TableType
+     |      pybind11_builtins.pybind11_object
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  GetLimit(...)
+     |      GetLimit(self: WasmEdge.TableType) -&gt; WasmEdge.Limit
+     |  
+     |  GetRefType(...)
+     |      GetRefType(self: WasmEdge.TableType) -&gt; WasmEdge.RefType
+     |  
+     |  __init__(...)
+     |      __init__(self: WasmEdge.TableType, arg0: WasmEdge.RefType, arg1: WasmEdge.Limit) -&gt; None
      |  
      |  ----------------------------------------------------------------------
      |  Static methods inherited from pybind11_builtins.pybind11_object:
@@ -1038,7 +1364,7 @@ CLASSES
      |  Methods defined here:
      |  
      |  __init__(...)
-     |      __init__(self: WasmEdge.Value, arg0: object) -&gt; None
+     |      __init__(self: WasmEdge.Value, arg0: object, arg1: WasmEdge.Type) -&gt; None
      |  
      |  ----------------------------------------------------------------------
      |  Readonly properties defined here:
@@ -1063,11 +1389,12 @@ FUNCTIONS
 DATA
     Annotations = &lt;Proposal.Annotations: 8&gt;
     BulkMemoryOperations = &lt;Proposal.BulkMemoryOperations: 4&gt;
+    Const = &lt;Mutability.Const: 0&gt;
     ExceptionHandling = &lt;Proposal.ExceptionHandling: 11&gt;
-    ExternRef = &lt;Type.ExternRef: 111&gt;
+    ExternRef = &lt;RefType.ExternRef: 111&gt;
     F32 = &lt;Type.F32: 125&gt;
     F64 = &lt;Type.F64: 124&gt;
-    FuncRef = &lt;Type.FuncRef: 112&gt;
+    FuncRef = &lt;RefType.FuncRef: 112&gt;
     FunctionReferences = &lt;Proposal.FunctionReferences: 12&gt;
     I32 = &lt;Type.I32: 127&gt;
     I64 = &lt;Type.I64: 126&gt;
@@ -1086,6 +1413,7 @@ DATA
     TailCall = &lt;Proposal.TailCall: 7&gt;
     Threads = &lt;Proposal.Threads: 10&gt;
     V128 = &lt;Type.V128: 123&gt;
+    Var = &lt;Mutability.Var: 1&gt;
     Wasi = &lt;Host.Wasi: 0&gt;
     Wasm = &lt;CompilerOutput.Wasm: 1&gt;
     WasmEdge = &lt;Host.WasmEdge: 1&gt;
